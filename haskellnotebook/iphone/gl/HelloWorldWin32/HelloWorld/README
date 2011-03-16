@@ -1,0 +1,27 @@
+###################
+
+Build with Win32 (Cygwin)
+
+CYGWIN_NT-5.1 1.5.24(0.156/4/2) 2007-01-31 10:57 i686 Cygwin
+
+-- Notes:
+
+Based on the Article From:
+
+"Write native iPhone applications using Eclipse
+CDT
+How Windows and Linux developers can bypass the iPhone
+SDK and write iPhone apps using open source tools
+Skill Level: Intermediate
+PJ Cabrera (pjcabrera@pobox.com)"
+
+Use TransMac to open the DMG file
+
+Resources:
+
+http://iphonedevelopment.blogspot.com/2009/05/opengl-es-from-ground-up-table-of.html
+
+http://afternoonnap.wordpress.com/2009/01/03/setting-up-iphone-toolchain-locally-on-windows-using-cygwin-etc/#comment-104
+
+
+http://blog.makotokw.com/2009/03/19/windowscygwiniphoneipod_touch_1/

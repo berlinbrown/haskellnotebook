@@ -1,0 +1,135 @@
+# ************** WARNING:
+# This is an old Makefile, pre-autoconf.  You should attempt to use
+# the autoconf generated Makefile before fiddling with this one
+
+
+# *****************************************************************
+# Briefly scan these (an oxymoron indeed!), and edit them to your system's
+# settings
+
+# Please read the _whole_ file or you will not be able to compile
+
+
+# *****************************************************************
+
+# If your compiler is not g++, put the proper one here
+CC = g++
+
+# If your remove without warnings command is something different.. change
+RM = rm -f
+
+# Put the location of your X11 libraries here (if applicable; not for win32)
+LOC_XLIBS = /usr/X11R6/lib
+
+# Put the location of your SDL libraries here
+LOC_SDL_LIBS = /usr/lib
+
+# Put the location of your SDL header files here
+LOC_SDL_HEADERS = /usr/include/SDL
+
+# Put the location of your OpenGL header files here
+LOC_GL_HEADERS = /usr/include/GL
+
+# Put the location of your OpenGL library files here
+LOC_GL_LIBS = /usr/X11R6/lib
+
+# *****************************************************************
+
+
+
+
+# *****************************************************************
+# Uncomment these if your system supports zlib and libpng,
+# And you want PNG screenshot support
+
+ PNG_CCFLAGS = -DPNG_SCREENSHOT
+ PNG_LDFLAGS = -lpng -lz
+
+# *****************************************************************
+
+
+# Uncomment the section that is relevant for your system
+# Leave the others commented
+
+# *****************************************************************
+# Uncomment these for a Linux system
+
+# CCFLAGS = $(PNG_CCFLAGS) -O2 -Wall -I$(LOC_SDL_HEADERS) -I$(LOC_GL_HEADERS)
+# LDFLAGS = -L$(LOC_SDL_LIBS) -L$(LOC_XLIBS) -L$(LOC_GL_LIBS) -lSDL -lGLU -lGL -lXmu -lXi -lX11 -lm $(PNG_LDFLAGS) 
+
+# *****************************************************************
+
+
+
+# *****************************************************************
+# Uncomment these for a Solaris system
+
+CCFLAGS = $(PNG_CCFLAGS) -O2 -Wall -I$(LOC_SDL_HEADERS) -I$(LOC_GL_HEADERS)
+LDFLAGS = -L$(LOC_SDL_LIBS) -L$(LOC_XLIBS) -L$(LOC_GL_LIBS) -lSDL -lglut -lGLU -lGL -lXmu -lXi -lX11 -lm $(PNG_LDFLAGS) -lposix4
+
+# *****************************************************************
+
+
+# *****************************************************************
+# Uncomment these for a Win32 system (Cygwin)
+
+# CCFLAGS = $(PNG_CCFLAGS) -O2 -Wall -I$(LOC_SDL_HEADERS) -I$(LOC_GL_HEADERS)
+# LDFLAGS = -L$(LOC_SDL_LIBS) -L$(LOC_GL_LIBS) -lSDL -lglut32 -lglu32 -lopengl32 -lm $(PNG_LDFLAGS)
+
+# *****************************************************************
+
+
+# READ BELOW AND COMMENT OUT THE LINES BELOW: "COMMENT THIS OUT"
+# Everything else should be just fine as it is
+
+# *****************************************************************
+
+
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# comments are lines that start with '#'
+
+# COMMENT THESE LINES OUT (everything from here to DONE)
+
+#comment_this:	
+#	@echo "*******************************************************"
+#	@echo "YOU DIDN'T FOLLOW INSTRUCTIONS AND READ THE Makefile"
+#	@echo "BEFORE COMPILING DID YOU?  PLEASE DO THAT BEFORE"
+#	@echo "PROCEEDING."
+#	@echo "*******************************************************"
+#	@exit
+
+# DONE
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# You should not need to edit anything below this
+
+FILES = main universe opengl orglist org idserver id vector world gene angle \
+	braininfo hebbian energy color quicksort license screenshot
+CCFILES = $(foreach FILE,$(FILES),$(FILE).cc)
+OFILES = $(foreach FILE,$(FILES),$(FILE).o)
+PROGNAME = achilles
+
+all: $(PROGNAME)
+
+$(PROGNAME): $(OFILES)
+	$(CC) -o $(PROGNAME) $(OFILES) $(LDFLAGS)
+
+.cc.o:
+	$(CC) $(CCFLAGS) -c $< -o $@
+
+
+clean:
+	$(RM) $(PROGNAME) $(PROGNAME).dep core $(OFILES)
+
+dep: depend
+
+depend:	
+	$(CC) $(CCFLAGS) -MM $(CCFILES) > $(PROGNAME).dep
+
+-include $(PROGNAME).dep
+
+
+# *****************************************************************

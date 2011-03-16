@@ -1,0 +1,55 @@
+###
+### Author: Berlin Brown
+###
+### Date: 12/11/2004
+###
+### Project: WidgetToolkit
+### Dev-C++ 4.9.9.1
+###
+### $Id: Makefile.win,v 1.3 2004/12/14 07:14:46 bigbinc Exp $
+###
+
+BIN_PATH=C:\Dev-Cpp\bin
+CPP  = $(BIN_PATH)\g++.exe
+CC   = $(BIN_PATH)\gcc.exe
+WINDRES = windres.exe
+RES  = 
+
+OBJ  = dllmain.o WidgetWindows.o $(RES)
+LINKOBJ  = dllmain.o WidgetWindows.o $(RES)
+
+LIBS =  -L"C:/Dev-Cpp/lib" --no-export-all-symbols --add-stdcall-alias -mwindows
+INCS =  -I"C:/Dev-Cpp/include" 
+
+CXXINCS =  -I"C:/Dev-Cpp/include/c++/3.3.1"  -I"C:/Dev-Cpp/include/c++/3.3.1/mingw32"  -I"C:/Dev-Cpp/include/c++/3.3.1/backward"  -I"C:/Dev-Cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Dev-Cpp/include" 
+
+BIN  = WidgetToolkit.dll
+CXXFLAGS = $(CXXINCS) -DBUILDING_DLL=1 
+CFLAGS = $(INCS) -DBUILDING_DLL=1 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before WidgetToolkit.dll all-after
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+DLLWRAP=$(BIN_PATH)\dllwrap.exe
+DEFFILE=libWidgetToolkit.def
+STATICLIB=libWidgetToolkit.a
+
+$(BIN): $(LINKOBJ)
+	$(DLLWRAP) --output-def $(DEFFILE) --implib $(STATICLIB) $(LINKOBJ) $(LIBS) -o $(BIN)
+
+###
+### Objects
+###
+dllmain.o: dllmain.c dll.h
+	$(CC) -c dllmain.c -o dllmain.o $(CFLAGS)
+
+WidgetWindows.o: WidgetWindows.c WidgetWindows.h WidgetWin.h
+	$(CC) -c WidgetWindows.c -o WidgetWindows.o $(CFLAGS)
+	
+###
+### End of Makefile
+###

@@ -1,0 +1,31 @@
+--
+-- Cabal build system for Simple Clients
+--
+Name:           SimpleClient
+Version:        0.0.1
+Cabal-Version:  >= 1.2
+Description:    Library in Haskell
+License:		BSD3
+License-file:   LICENSE.BOTLIST
+Author:         Berlin Brown
+Maintainer:		berlin.brown@gmail.com
+Copyright:      Copyright (C) 2008 Berlin Brown
+Homepage:       http://code.google.com/p/openbotlist/
+Build-Depends:  base, haskell98, networking
+
+Library
+  Hs-Source-Dirs:        src
+  Ghc-Options:           -O2
+  Build-Depends:         base, haskell98, network, binary, bytestring
+  Exposed-modules:       Network.Simple.SimpleClient
+                         Network.WithByteString.ByteStringClient
+
+Executable client1
+  Hs-Source-Dirs:     src
+  Main-is:            Main.hs
+  Other-Modules:      Network.Simple.SimpleClient
+
+Executable client2
+  Hs-Source-Dirs:     src
+  Main-is:            ByteStringMain.hs
+  Other-Modules:      Network.Simple.SimpleClient

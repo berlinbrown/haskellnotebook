@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ****************************************************** -->
+<!-- Copyright (c) 2008 - Berlin Brown -->
+<!-- Date: 11/1/2008 -->
+<!-- ****************************************************** -->
+<project name="Generic Ant Script" default="run.spider_remote" basedir=".">
+
+    <property file="build.properties" />
+    
+    <property name="build.dir"            value="${basedir}/build"/>
+    <property name="build.classes.dir"    value="${basedir}/build/classes"/>
+    
+    <property name="src.dir"              value="${basedir}/src"/>
+    <property name="scala.src.dir"        value="${basedir}/scala"/>
+	
+    <property name="lib.dir"              value="${botlist.home}/WEB-INF/lib"/>
+    <property name="lib.runtime.dir"      value="${botlist.home}/runtime-lib"/>
+            
+	<!-- **************************************** -->
+	<!-- Jar Imports -->
+	<!-- **************************************** -->
+    <property name="scala.jar"             value="${lib.dir}/scala-library-2.6.1.jar" />
+	<property name="scala-compiler.jar"    value="${lib.runtime.dir}/scala-compiler-2.6.1.jar" />
+	<property name="sqlite.jar"            value="${lib.dir}/sqlitejdbc-v037-nested.jar" />
+	<property name="xml.jar"               value="${lib.runtime.dir}/xercesImpl.jar" />
+	
+    <target name="init" description="Initialization">
+        <tstamp/>
+        <echo message="Running with Tomcat Home=${tomcat.home}" />
+    </target>
+	
+    <!-- Target: CLASSPATH -->
+    <path id="classpath">        
+        <pathelement location="${scala.jar}" />
+    	<pathelement location="${scala-compiler.jar}" />
+    	<pathelement location="${xml.jar}" />
+    	<pathelement location="${sqlite.jar}" />
+    	
+        <!-- Include the CLASSES directory -->
+        <pathelement location="${build.classes.dir}" />
+    </path>
+
+    <!-- Target: Prepare -->
+    <target name="prepare">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.classes.dir}"/>
+    </target>
+
+    <!-- Target: Compile -->
+    <target name="compile" depends="prepare">
+        <javac deprecation="true"
+                target="1.5"
+                srcdir="${src.dir}"
+                destdir="${build.classes.dir}"
+                includes="**/*.java">
+            <classpath refid="classpath"/>
+            <compilerarg value="-Xlint" />
+        </javac>    	
+    </target>
+	
+    <!-- **************************************** -->
+    <!-- Add support for scala compiles, used with liftweb apps -->
+    <!-- Date Created: 12/29/2007 -->
+    <!-- **************************************** -->
+    <taskdef resource="scala/tools/ant/antlib.xml">
+      <classpath refid="classpath" />
+    </taskdef>
+	
+	<!-- Target: Compile Scala Source -->
+	<target name="scala.compile" depends="compile">
+		<scalac srcdir="${scala.src.dir}" 
+				destdir="${build.classes.dir}" 
+		  		classpathref="classpath" force="never">
+		    <include name="**/*.scala"/>
+		</scalac>
+	</target>
+
+    <!-- Build beans jar -->
+    <target name="jar.spider_remote" depends="scala.compile">
+        <jar jarfile="${build.dir}/${appname.jar}.jar">
+            <fileset dir="${build.classes.dir}" >
+				<include name="**/*.class"/>
+            </fileset>
+        </jar>
+    </target>
+    <target name="run.spider_remote" depends="jar.spider_remote">
+		<java classname="org.spirit.spiderremote.SpiderRemote">
+	            <classpath refid="classpath" />
+	            <classpath>
+	                <pathelement location="${basedir}" />
+	            </classpath>	            
+		</java>
+	</target>	 	
+    
+    <!-- Main Clean -->
+    <target name="clean">
+        <delete dir="${build.dir}" />
+        <delete dir="${basedir}/bin" />        
+    </target>
+    <!-- End of Main Clean -->
+</project>
+<!-- End of the File -->

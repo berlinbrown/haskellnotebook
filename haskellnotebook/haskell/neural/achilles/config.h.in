@@ -1,0 +1,72 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+#define PACKAGE "achilles"
+#define VERSION "0.0.5"
+
+/* Define if you have the <GL/glu.h> header file. */
+#undef HAVE_GL_GLU_H
+
+/* Define if you have the <GL/gl.h> header file. */
+#undef HAVE_GL_GL_H
+
+/* Define if you have the `GL' library (-lGL). */
+#undef HAVE_LIBGL
+
+/* Define if you have the `GLU' library (-lGLU). */
+#undef HAVE_LIBGLU
+
+/* Define if you have the `glu32' library (-lglu32). */
+#undef HAVE_LIBGLU32
+
+/* Define if you have the `m' library (-lm). */
+#undef HAVE_LIBM
+
+/* Define if you have the `opengl32' library (-lopengl32). */
+#undef HAVE_LIBOPENGL32
+
+/* Define if you have the `png' library (-lpng). */
+#undef HAVE_LIBPNG
+
+/* Define if you have the `posix4' library (-lposix4). */
+#undef HAVE_LIBPOSIX4
+
+/* Define if you have the `pthread' library (-lpthread). */
+#undef HAVE_LIBPTHREAD
+
+/* Define if you have the `SDL' library (-lSDL). */
+#undef HAVE_LIBSDL
+
+/* Define if you have the `X11' library (-lX11). */
+#undef HAVE_LIBX11
+
+/* Define if you have the `Xi' library (-lXi). */
+#undef HAVE_LIBXI
+
+/* Define if you have the `Xmu' library (-lXmu). */
+#undef HAVE_LIBXMU
+
+/* Define if you have the `z' library (-lz). */
+#undef HAVE_LIBZ
+
+/* Define if you have the <limits.h> header file. */
+#undef HAVE_LIMITS_H
+
+/* Define if you have the <SDL.h> header file. */
+#undef HAVE_SDL_H
+
+/* Define if you have the <SDL/SDL.h> header file. */
+#undef HAVE_SDL_SDL_H
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Version number of package */
+#undef VERSION
+
+/* Define if the X Window System is missing or not being used. */
+#undef X_DISPLAY_MISSING
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const

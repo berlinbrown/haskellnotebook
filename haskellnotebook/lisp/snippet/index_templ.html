@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+ <title>Botnode - Source Code Snippet Cookbook</title>
+ <META NAME="DESCRIPTION" CONTENT="Botnode software development projects (Code Snippets)">
+ <META NAME="keywords" CONTENT="software, jruby, java, j2ee, ruby, factor, hacking, botlisting, bot's list, list, ads, advertising, social bookmarking, networking, social networking, reddit, digg">
+ </head>
+ <body>
+
+<table border=1>
+  <!-- TMPL_LOOP rows -->
+    <tr>
+      <!-- TMPL_LOOP cols -->
+        <!-- TMPL_IF colorful-style -->
+          <td align="right" bgcolor="pink"><!-- TMPL_VAR content --></td>
+        <!-- TMPL_ELSE -->
+          <td align="right" ><!-- TMPL_VAR content --></td>
+        <!-- /TMPL_IF -->
+      <!-- /TMPL_LOOP -->
+    </tr>
+  <!-- /TMPL_LOOP -->
+</table>
+
+
+ </body>
+</html>

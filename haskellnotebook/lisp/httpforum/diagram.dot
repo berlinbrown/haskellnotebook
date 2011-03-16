@@ -1,0 +1,8 @@
+digraph G {
+      main -> "http-main" -> "http-connect-data";
+      main -> "init-postdata";
+      "init-postdata" -> "list->hash *postdata*";
+      "http-connect-data" -> "http-connect" -> "http-client-request";
+
+}
+

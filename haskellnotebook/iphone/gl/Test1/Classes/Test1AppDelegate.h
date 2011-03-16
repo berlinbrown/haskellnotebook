@@ -1,0 +1,22 @@
+//
+//  Test1AppDelegate.h
+//  Test1
+//
+//  Created by Berlin Brown on 9/1/09.
+//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class EAGLView;
+
+@interface Test1AppDelegate : NSObject <UIApplicationDelegate> {
+    UIWindow *window;
+    EAGLView *glView;
+}
+
+@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet EAGLView *glView;
+
+@end
+

@@ -1,0 +1,106 @@
+############################################################
+#  Copyright (C) 2003-2007  Berlin Brown (Botnode.com).  All rights reserved.
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions are met:
+#
+#  1. Redistributions of source code must retain the above copyright
+#     notice, this list of conditions and the following disclaimer.
+#  2. Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#  3. The name of the author may not be used to endorse or promote products
+#     derived from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+#  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+#  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+#  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+#  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+#  SUCH DAMAGE.
+############################################################
+--------------------
+Author: Berlin Brown (contact at berlin.brown at gmail.com)
+Date: 12/27/2008
+Compiled with: 
+  gcc (Ubuntu 4.3.2-1ubuntu11) 4.3.2
+Tested On:
+  Linux houston 2.6.27-9-generic #1
+   SMP Thu Nov 20 21:57:00 UTC 2008 i686 GNU/Linux
+To Compile: type 'make' at the command line prompt
+To Run:     type 'make run' to run the tests or ./octanec <lisp file>
+Interesting Code:  
+  See octanec_lib.c:eval
+      octanec_lib.c:read
+      octanec_lib.c:next_token	
+	  octanec_lib.c:load_scheme
+
+**************
+* Quick Start and Running the Interpreter
+**************
+
+To Compile: 
+   type 'make' at the command line prompt
+To Run:
+   type 'make run' to run the tests or ./octanec <lisp file>
+
+For Example:
+ 
+  test.lisp contains the following:
+-------------
+(+ 4 5 6)
+(+ 6 6 6)  
+(+ 1 2 3 )
+(+ 1 (+ 1 (* 1 1)))
+-------------
+
+  ./octanec test.lisp
+
+...
+...
+trace: eval[t1] - instance of procedure calltrace: eval - instance of String: data=[+]
+trace: eval - instance of non-pair =>
+trace: eval - instance of non-pair =>
+trace: eval - instance of non-pair =>
+at apply id= 27 4.000000 x==>97125c0 16
+at plus 27
+
+test eval [result after eval]: object=9712918 type=16 [15.000000]
+...
+...
+
+**************
+* Description
+**************
+
+Peter Norvig created JScheme, a Lisp Scheme dialect written in Java. 
+It was created in 1998 and it has since been forked, extended and 
+used quite extensively in other modern projects for the web and elsewhere. 
+The C lisp intepreter is based on the JScheme interpreter. 
+The JScheme code is copyrighted to Peter Norvig
+This is  only a modifications to make our Lisp even lighter 
+than it was originally. Norvig's most recent implementation of 
+JScheme contains 1905 lines of Java code. 
+This implementation contains 2000 lines of C code 
+wrapped in additional Javadoc comments, including implemenations 
+of list, hashtable datastructures.
+
+
+There is a lot that can be added to Norvig's implementation. 
+Add full support for a R5RS Scheme Implementation. 
+Add better input/output support. 
+Copy interesting functions from Arc or Common Lisp. 
+Write a Scheme compiler. In fact, the source code in my implementation 
+and Norvig's is fairly straightforward, 
+
+*************
+* References
+*************
+
+Also see:
+http://berlinbrowndev.blogspot.com/2008/07/simple-lisp-implementation-in-java-ode.html

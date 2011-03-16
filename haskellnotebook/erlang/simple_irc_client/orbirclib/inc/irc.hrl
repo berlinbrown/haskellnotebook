@@ -1,0 +1,2 @@
+-record(irc_client_info, {nick, realname="", servers, password, handler}).
+-record(irc_bot, {botname, nick, realname="", servers, password, handler, channels}).

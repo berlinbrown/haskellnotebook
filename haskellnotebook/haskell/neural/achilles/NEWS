@@ -1,0 +1,26 @@
+News?
+Nothing particularly special, really.  I have changed the version
+numbers to something more sane, being that they were arbitrarily
+stuck at 0.0.x for over a year, and I couldn't decide what consituted
+a major version shift.  In any case, a scientific application like
+this versions differently from other, utility software.  As more
+tests and experiments are added, increasing the version number simply
+indicates to people that there is a version out there that is
+newer, with more features perhaps.  It's not about creating a
+"major version branch" with specific functionality and releasing
+"minor revisions" to fix bugs.  There's no target functionality
+in this program, it simply exists to be fiddled with, to amuse
+or to learn.
+
+All this being said, the program has not undergone any major revision
+in the past year.  I have been busy, have had other concerns.
+I have had a few people voice their interest in helping out,
+and a friend of mine has managed to port this to Mac OS X (yay!),
+and that will be incorporated into the next version once I sort
+things out.  With my declining interest in associating myself with
+C or C++, I doubt that this current codebase is going to be much
+altered by myself; however, I often toy with plans to rewrite the
+whole mess in Common LISP or Scheme--where the incredible flexibility
+of LISP will make life a lot easier on me.  But, alas..
+
+

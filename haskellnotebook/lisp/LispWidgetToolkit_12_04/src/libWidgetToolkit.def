@@ -1,0 +1,37 @@
+; C:\Dev-Cpp\bin\dlltool --base-file C:\DOCUME~1\BERLIN~1.BRO\LOCALS~1\Temp/cca00412.base --output-exp WidgetToolkit.exp --dllname WidgetToolkit.dll --output-def libWidgetToolkit.def --no-export-all-symbols --add-stdcall-alias --exclude-symbol=DllMainCRTStartup@12 --def C:\DOCUME~1\BERLIN~1.BRO\LOCALS~1\Temp/cca00412.def --output-lib libWidgetToolkit.a
+EXPORTS
+	WidgetDefaultCursor @ 1 ; 
+	TestLispPointer @ 2 ; 
+	TestMessageBox @ 3 ; 
+	TestMessageBoxStr @ 4 ; 
+	TestWNDCLASS @ 5 ; 
+	TestX @ 6 ; 
+	WidgetCopyDialogString @ 7 ; 
+	WidgetCreateSimpleFrame @ 8 ; 
+	WidgetCreateSimpleWin @ 9 ; 
+	WidgetCreateWindow = WidgetCreateWindow@44 @ 10 ; 
+	WidgetCreateWindow@44 @ 11 ; 
+	WidgetCreateWindowEx = WidgetCreateWindowEx@48 @ 12 ; 
+	WidgetCreateWindowEx@48 @ 13 ; 
+	WidgetCreateWindowID = WidgetCreateWindowID@44 @ 14 ; 
+	WidgetCreateWindowID@44 @ 15 ; 
+	WidgetDefWindowProc @ 16 ; 
+	WidgetDefaultBrush @ 17 ; 
+	TestGetWNDCLASS @ 18 ; 
+	WidgetDefaultIcon @ 19 ; 
+	WidgetDestroyWindow @ 20 ; 
+	WidgetGetDlgItem @ 21 ; 
+	WidgetGetHINSTANCE = WidgetGetHINSTANCE@0 @ 22 ; 
+	WidgetGetHINSTANCE@0 @ 23 ; 
+	WidgetGetHiWord @ 24 ; 
+	WidgetGetLastError @ 25 ; 
+	WidgetGetLoWord @ 26 ; 
+	WidgetMessageBox @ 27 ; 
+	WidgetMoveWindow @ 28 ; 
+	WidgetNewMessageBox @ 29 ; 
+	WidgetPixelDialogCX @ 30 ; 
+	WidgetPixelDialogCY @ 31 ; 
+	WidgetPostQuitMessage @ 32 ; 
+	WidgetRegisterClassFull @ 33 ; 
+	WidgetSetWindowText @ 34 ; 
+	WidgetSizeofWND @ 35 ; 

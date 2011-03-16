@@ -1,0 +1,36 @@
+Server Software:        Hunchentoot
+Server Hostname:        localhost
+Server Port:            4242
+
+Document Path:          /
+Document Length:        8208 bytes
+
+Concurrency Level:      20
+Time taken for tests:   47.605169 seconds
+Complete requests:      5000
+Failed requests:        0
+Write errors:           0
+Total transferred:      41890000 bytes
+HTML transferred:       41040000 bytes
+Requests per second:    105.03 [#/sec] (mean)
+Time per request:       190.421 [ms] (mean)
+Time per request:       9.521 [ms] (mean, across all concurrent requests)
+Transfer rate:          859.32 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   98 739.0      0   21000
+Processing:     6   86 352.5     49   10804
+Waiting:        5   83 352.3     48   10804
+Total:          6  185 858.4     49   21065
+
+Percentage of the requests served within a certain time (ms)
+  50%     49
+  66%     65
+  75%     72
+  80%     81
+  90%    104
+  95%    182
+  98%   3052
+  99%   3090
+ 100%  21065 (longest request)

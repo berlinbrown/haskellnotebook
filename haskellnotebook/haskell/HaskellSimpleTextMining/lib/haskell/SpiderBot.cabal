@@ -1,0 +1,31 @@
+--**************************************
+-- Cabal build system for AMQP
+--**************************************
+Name:           SpiderBot
+Version:        0.0.1
+Cabal-Version:  >= 1.2
+Description:    AMQP Library in Haskell
+License:        BSD3
+License-file:   LICENSE.BOTLIST
+Author:         Berlin Brown
+Maintainer:     berlin.brown@gmail.com
+Copyright:      Copyright (C) 2008 Berlin Brown
+Homepage:       http://code.google.com/p/openbotlist/
+Build-Depends:  base, haskell98
+
+Executable tokenize
+    Hs-Source-Dirs:     src src/Data/SpiderNet/Tools
+    Main-is:            Tokenize.hs
+    Build-Depends:      base, haskell98, network, time, regex-compat, containers
+
+Executable trainreport
+    Hs-Source-Dirs:     src src/Data/SpiderNet/Tools
+    Main-is:            TrainReport.hs
+    Build-Depends:      base, haskell98, network, time, regex-compat, containers, directory
+
+Executable queuedump
+    Hs-Source-Dirs:     src src/Data/SpiderNet/Tools
+    Main-is:            QueueExtractDump.hs
+    Build-Depends:      base, haskell98, network, time, hsql, hsql-sqlite3,
+                        regex-compat, containers, directory
+

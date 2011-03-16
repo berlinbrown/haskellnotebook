@@ -1,0 +1,6 @@
+The following files were removed due to space considerations.
+
+You may add them back using jruby -S warbler or some other means.
+
+-rwxr-xr-x  1 7341701 Aug  8 21:41 jruby-complete-1.1.3.jar
+-rwxr-xr-x  1 192848 Aug  8 21:41 jruby-rack-0.9.1.jar

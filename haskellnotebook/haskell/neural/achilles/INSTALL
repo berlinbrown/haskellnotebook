@@ -1,0 +1,7 @@
+Quick way: ./configure && make && make install
+See ./configure --help for more options
+
+
+Should be able to ignore any warnings related to platform-specific libs,
+unless it pertains to your platform :)
+

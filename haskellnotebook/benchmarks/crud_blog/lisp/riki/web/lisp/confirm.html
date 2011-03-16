@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title>Ghost Network - Trinity</title>
+
+    {% block meta_information %}
+      <meta name="DESCRIPTION" content="Botlist - Promote yourself or something else interesting. Like Reddit or Digg but for adults.  New and exciting article web submissions with user ratings. (built with Scala, JRuby, Spring, Liftweb, Haskell technology)"></meta>
+     <meta name="keywords" content="articles, wikileaks, secret information, dune, obama 2008, ron paul 2008, article, submissions, web submit, user ratings, listing, bot, botlist, botlisting, bot's list, list, ads, advertising, social bookmarking, networking, social networking, reddit, digg, scala, jruby, liftweb"></meta>
+      <link type="application/rss+xml" rel="alternate" title="Botverse - Link Listings" href="/spring/rss/listings_rss.html"></link>
+    <link href="/company/stylesheets/scaffold.css" media="screen" rel="Stylesheet" type="text/css" ></link>
+      <link href="/company/stylesheets/newspirit.css" media="screen" rel="Stylesheet" type="text/css" ></link>
+      <link href="/company/stylesheets/botlist.css" media="screen" rel="Stylesheet" type="text/css" ></link>
+      <link href="/company/stylesheets/botlist_general2.css" media="screen" rel="Stylesheet" type="text/css" ></link>
+      {% endblock %}
+      <style type="text/css">
+       {% block botverse_link_stat %}	{% endblock %}
+    </style>
+</head>
+<body>
+        <div id="body_content_center">
+            <div style="border-bottom: 1px solid #816943;">
+                <img src="/company/images/building_orange_roof.jpg" alt="Botlist header logo" />
+             </div>
+            <h1 class="bot_titlelogo">
+                [ Botlist Home ] (the ghostnetwork/appspot.com)
+            </h1>
+            {# Navigation Header #}
+            {% block default_navigation %}{% endblock %}
+            {# End of Navigation Header #}
+
+            <div style="margin: 8px;">
+                <h3 class="bot_headerinfo">
+                All your favorite links in one place.  Bookmark popular items for you and friends.  Check out what other people are interested in.
+                </h3>
+            </div>
+            <!-- Section with City Listing -->
+            <div style="margin: 8px;">
+
+                {# Add Welcome user message and login content (above content border line) #}
+                {% block default_profile_nav %}{% endblock %}
+                {# End of Welcome Header #}
+
+                <div id="link_content_group">
+
+                    <h1>Data Submitted</h1>
+
+                </div>
+
+            </div>
+            {% block default_footer %}{% endblock %}
+        </div>
+</body>
+</html>

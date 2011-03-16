@@ -1,0 +1,12 @@
+###
+### Author: Berlin Brown
+###
+### Date: 12/20/2004
+###
+
++ 12/20/2004
+	- Found out that Newline is not usually 0x0A, but actually
+		in CLISP is better to use for CRLF, #\Return #\Linefeed as opposed
+		to #\Return #\Newline, which is different in linux than win32
+	- Still working with basic Window creation
+	- Added Changelog

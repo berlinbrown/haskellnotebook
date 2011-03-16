@@ -1,0 +1,18 @@
+--
+-- Cabal build system
+--
+Name:           ExampleUnicode
+Version:        0.0.1
+Cabal-Version:  >= 1.2
+Description:    Library in Haskell
+License:		BSD3
+License-file:   LICENSE.BOTLIST
+Author:         Berlin Brown
+Maintainer:		berlin.brown@gmail.com
+Copyright:      Copyright (C) 2008 Berlin Brown
+Homepage:       http://code.google.com/p/haskellnotebook/
+
+Executable test1
+  Hs-Source-Dirs:     src/Tests/Unicode
+  Main-is:            ExampleUnicode.hs
+  Build-Depends:      base, haskell98, bytestring, utf8-string

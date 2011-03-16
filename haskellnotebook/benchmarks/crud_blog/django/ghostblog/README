@@ -1,0 +1,6 @@
+
+python manage.py runserver 9980
+
+http://www.djangoproject.com/documentation/install/
+
+http://www.djangoproject.com/documentation/tutorial01/

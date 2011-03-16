@@ -1,0 +1,181 @@
+#################################################
+### Berlin Brown
+### General Notes for this library
+###
+### $Id: NOTES.txt,v 1.4 2004/12/21 01:36:23 bigbinc Exp $
+#################################################
+
+---------------------------------------
+
+Win32 types
+---------------------------------------
+
+grep: sys: Is a directory
+windef.h:typedef unsigned long DWORD;
+windef.h:typedef unsigned short WORD;
+windef.h:typedef WORD *PWORD,*LPWORD;
+windef.h:typedef DWORD *PDWORD,*LPDWORD;
+
+lectl.h:typedef VARIANT_BOOL OLE_CANCELBOOL;
+lectl.h:typedef VARIANT_BOOL OLE_ENABLEDEFAULTBOOL;
+rep: sys: Is a directory
+indef.h:typedef int WINBOOL,*PWINBOOL,*LPWINBOOL;
+indef.h:typedef WINBOOL BOOL;
+indef.h:typedef BOOL *PBOOL,*LPBOOL;
+types.h:typedef short VARIANT_BOOL;
+
+
+Note: you probably want BOOL to be int
+
+Example Child Windows:
+
+
+
+ DLGITEMTEMPLATE 
+
+ ABOUTDLG DIALOG 0, 0, 155, 102
+ STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+ CAPTION "This is my About Box"
+ FONT 8, "MS Sans Serif"
+ {
+    CONTROL "&OK", IDOK, "BUTTON", BS_DEFPUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 6, 83, 50, 14
+    CONTROL "&Cancel", IDCANCEL, "BUTTON", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 95, 83, 50, 14
+    CONTROL "About This Program", -1, "button", BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_GROUP, 5, 5, 144, 73
+    CONTROL "An example program showing how to use dialog boxes.\r\n\r\nby theForger", -1, "static", SS_CENTER | WS_CHILD | WS_VISIBLE, 27, 27, 100, 50
+ }
+
+EDITDLG DIALOG 0, 0, 149, 49
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | 0x200L | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "A Window"
+FONT 8, "MS Sans Serif"
+{
+ CONTROL "", IDC_EDITDLG_TEXT, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 3, 8, 139, 12
+ CONTROL "&Set Text", IDC_EDITDLG_SETTEXT, "button", BS_DEFPUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 6, 28, 50, 14
+ CONTROL "&Close", IDCANCEL, "BUTTON", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 92, 28, 50, 14
+}
+
+
+ Note : MessageBox Types
+
+		MB_OK
+ 	MB_OKCANCEL
+		MB_ABORTRETRYIGNORE
+		MB_YESNOCANCEL
+		MB_YESNO
+		MB_RETRYCANCEL
+		MB_CANCELTRYCONTINUE
+		MB_HELP
+		
+		MB_ICONEXCLAMATION
+		MB_ICONWARNING
+		MB_ICONINFORMATION
+		MB_ICONASTERISK
+		MB_ICONQUESTION
+		MB_ICONSTOP
+		MB_ICONERROR
+		MB_ICONHAND
+
+
+The CS_HREDRAW and CS_VREDRAW are used for 
+vertical and horizontal redraw
+
+SEE WINNT.H for handle definitions
+
+-----------------------------------------------------------
+
+View the FFI clisp description:
+
+- http://clisp.cons.org/impnotes/dffi.html
+
+-----------------------------------------------------------
+
+C - Types:
+
+Foreign C types are used in the “FFI”. They are not regular Common Lisp types or CLOS classes.
+
+A c-type is either a predefined C type or the name of a type defined by FFI:DEF-C-TYPE.
+
+the predefined C types (c-type)
+
+simple-c-type
+
+    the simple C types
+    Lisp name	Lisp equivalent	C equivalent	ILU equivalent	Comment
+    NIL	NIL	void	 	as a result type only
+    BOOLEAN	BOOLEAN	int	BOOLEAN	 
+    CHARACTER	CHARACTER	char	SHORT CHARACTER	 
+    char	INTEGER	signed char	 	 
+    uchar	INTEGER	unsigned char	 	 
+    short	INTEGER	short	 	 
+    ushort	INTEGER	unsigned short	 	 
+    int	INTEGER	int	 	 
+    uint	INTEGER	unsigned int	 	 
+    long	INTEGER	long	 	 
+    ulong	INTEGER	unsigned long	 	 
+    uint8	(UNSIGNED-BYTE 8)	uint8	BYTE	 
+    sint8	(SIGNED-BYTE 8)	sint8	 	 
+    uint16	(UNSIGNED-BYTE 16)	uint16	SHORT CARDINAL	 
+    sint16	(SIGNED-BYTE 16)	sint16	SHORT INTEGER	 
+    uint32	(UNSIGNED-BYTE 32)	uint32	CARDINAL	 
+    sint32	(SIGNED-BYTE 32)	sint32	INTEGER	 
+    uint64	(UNSIGNED-BYTE 64)	uint64	LONG CARDINAL	does not work on all platforms
+    sint64	(SIGNED-BYTE 64)	sint64	LONG INTEGER	does not work on all platforms
+    SINGLE-FLOAT	SINGLE-FLOAT	float	 	 
+    DOUBLE-FLOAT	DOUBLE-FLOAT	double	 	 
+FFI:C-POINTER
+    This type corresponds to what C calls void*, an opaque pointer. When used as an argument, NIL is accepted as a FFI:C-POINTER and treated as NULL; when a function wants to return a NULL FFI:C-POINTER, it actually returns NIL. 
+FFI:C-STRING
+    This type corresponds to what C calls char*, a zero-terminated string. Its Lisp equivalent is a string, without the trailing zero character. 
+(FFI:C-STRUCT class (ident1 c-type1) ... (identn c-typen))
+
+    This type is equivalent to what C calls struct { c-type1 ident1; ...; c-typen identn; }. Its Lisp equivalent is: if class is VECTOR, a SIMPLE-VECTOR; if class is LIST, a proper list; if class is a symbol naming a structure or CLOS class, an instance of this class, with slots of names ident1, ..., identn.
+
+    class may also be a CONS of a SYMBOL (as above) and a LIST of FFI:DEF-C-STRUCT options. 
+(FFI:C-UNION (ident1 c-type1) ... (identn c-typen))
+    This type is equivalent to what C calls union { c-type1 ident1; ...; c-typen identn; }. Conversion to and from Lisp assumes that a value is to be viewed as being of c-type1. 
+(FFI:C-ARRAY c-type dim1)
+(FFI:C-ARRAY c-type (dim1 ... dimn))
+    This type is equivalent to what C calls c-type [dim1] ... [dimn]. Note that when an array is passed as an argument to a function in C, it is actually passed as a pointer; you therefore have to write (FFI:C-PTR (FFI:C-ARRAY ...)) for this argument's type.
+(FFI:C-ARRAY-MAX c-type maxdimension)
+    This type is equivalent to what C calls c-type [maxdimension], an array containing up to maxdimension elements. The array is zero-terminated if it contains less than maxdimension elements. Conversion from Lisp of an array with more than maxdimension elements silently ignores the superfluous elements. 
+(FFI:C-FUNCTION (:ARGUMENTS {(argument a-c-type [PARAM-MODE [ALLOCATION]])}*) (:RETURN-TYPE r-c-type [ALLOCATION]) (:LANGUAGE language))
+    This type designates a C function that can be called according to the given prototype (r-c-type (*) (a-c-type1, ...)). Conversion between C functions and Lisp functions is transparent, and NULL/NIL is recognized and accepted.
+(FFI:C-PTR c-type)
+    This type is equivalent to what C calls c-type *: a pointer to a single item of the given c-type.
+(FFI:C-PTR-NULL c-type)
+    This type is also equivalent to what C calls c-type *: a pointer to a single item of the given c-type, with the exception that C NULL corresponds to Lisp NIL.
+(FFI:C-ARRAY-PTR c-type)
+    This type is equivalent to what C calls c-type (*)[]: a pointer to a zero-terminated array of items of the given c-type.
+
+-----------------------------------------------------------
+
+The CreateDialogIndirect macro creates a modeless dialog box 
+	from a dialog box template in memory. The CreateDialogIndirect macro uses the CreateDialogIndirectParam function.
+
+More Notes on different views: 
+
+  	SW_SHOW				Displays a window and makes it visible
+  	SW_SHOWNORMAL		Displays the window in its regular size. In most circumstances, the operating system keeps track of the last location and size a window such as Internet Explorer or My Computer had the last time it was displaying. This value allows the OS to restore it.
+  	SW_SHOWMINIMIZED 	Opens the window in its minimized state, representing it as a button on the taskbar
+  	SW_SHOWMAXIMIZED 	Opens the window in its maximized state
+  	SW_SHOWMINNOACTIVE 	Opens the window but displays only its icon. It does not make it active
+  	SW_SHOWNA 			As previous
+  	SW_SHOWNOACTIVATE 	Retrieves the window's previous size and location and displays it accordingly
+  	SW_HIDE 			Used to hide a window
+  	SW_MINIMIZE			Shrinks the window and reduces it to a button on the taskbar
+	SW_MAXIMIZE 			Maximizes the window to occupy the whole screen area
+  	SW_RESTORE 			If the window was minimized or maximized, it would be restored to its previous location and size
+
+  	
+ typedef struct _WNDCLASS {
+    UINT    style;
+    WNDPROC lpfnWndProc;
+    int     cbClsExtra;
+    int     cbWndExtra;
+    HANDLE  hInstance;
+    HICON   hIcon;
+    HCURSOR hCursor;
+    HBRUSH  hbrBackground;
+    LPCTSTR lpszMenuName;
+    LPCTSTR lpszClassName;
+} WNDCLASS;

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================  -->
+<!-- Berlin Brown                       -->
+<!--  http://www.retroevolution.com     -->
+<!--  $Id: build.xml,v 1.1 2004/12/12 21:37:48 bigbinc Exp $ -->
+<!-- ======================================================  -->
+<project name="SimpleZipFile-Proj" default="zip" basedir=".">
+
+  <!--.. Properties ............................................. -->
+  <property name="final.name" value="Widget" />  
+
+  <!-- Time Stamp -->
+  <tstamp>
+   <format property="current.time" pattern="MM-dd-yyyy-hh-mm" />
+  </tstamp>
+	
+  <!-- Zip the Directory -->
+  <target name="zip">
+    <zip destfile="${final.name}-${current.time}.zip"
+                       basedir="../${final.name}"
+                 />
+  	
+  	<!-- Echo the google group lispgui message -->
+  	<echo file="dailybuildmsg.txt" append="false">
+###
+### Daily Build : ${current.time}
+###
+  	</echo>  		
+  	<echo>
+###
+### Daily Build : ${current.time}
+###
+  		
+Subject:	${final.name}-${current.time}.zip build created
+  		
+Msg:
+
+see 
+ http://www.retroevolution.com/beta/widget_toolkit/snapshots.htm
+ http://www.retroevolution.com/beta/widget_toolkit/${final.name}-${current.time}.zip
+  		
+Thanks, http://groups-beta.google.com/group/lispgui/
+  		
+  	</echo>
+  </target>
+  <!-- End of zip target -->
+	
+</project>

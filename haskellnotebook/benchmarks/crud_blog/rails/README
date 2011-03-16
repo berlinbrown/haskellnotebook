@@ -1,0 +1,50 @@
+
+
+script/server
+
+
+JRuby;
+
+./gem.bat install rails --http-proxy http://proxy.com:9999 
+
+
+./rails.bat jblah
+
+
+$ /cygdrive/c/projects/downloads_main/downloads10/jruby-bin-1.1.3/jr
+uby-1.1.3/bin
+$ ./jruby.bat jblah/script/server
+=> Booting WEBrick...
+JRuby limited openssl loaded. gem install jruby-openssl for full support.
+http://wiki.jruby.org/wiki/JRuby_Builtin_OpenSSL
+=> Rails 2.1.0 application started on http://0.0.0.0:3000
+=> Ctrl-C to shutdown server; call with --help for options
+[2008-08-08 21:23:21] INFO  WEBrick 1.3.1
+[2008-08-08 21:23:21] INFO  ruby 1.8.6 (2008-07-20) [java]
+[2008-08-08 21:23:21] INFO  WEBrick::HTTPServer#start: pid=2064 port=3000
+
+http://weblogs.java.net/blog/arungupta/archive/2008/04/rails_and_java_1.html
+
+./gem.bat install warbler --http-proxy http://localhost:9999
+
+## Create the controller
+../jruby.bat script/generate controller home index
+
+## Edit the environment.rb
+require 'rubygems'
+require 'active_record'
+
+Uncomment the following:
+  config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
+
+## Create a war file with warbler
+../jruby.bat -S warble
+
+## Copy the jblah.war file to the tomcat webapps directory
+
+## JRuby Rails Errors
+Aug 9, 2008 11:02:03 AM org.apache.catalina.core.ContainerBase$ContainerBackgrou
+ndProcessor processChildren
+SEVERE: Exception invoking periodic operation:
+java.lang.OutOfMemoryError: Java heap space
+

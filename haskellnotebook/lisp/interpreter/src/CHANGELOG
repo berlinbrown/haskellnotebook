@@ -1,0 +1,14 @@
+
+*****************************
+changelog for octanec simple lisp interpreter
+created: 12/27/2008
+*****************************
+
+12/27/2008 Berlin Brown    berlin dot brown at gmail.com
+
+	* Added initial code
+	* Fixed the read and eval in octanec_lib.c 
+	* Added simple test framework for looking at pieces of code
+	* Finally added a very basic hashtable implementation
+	* Added simple C basd object system
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2006 - Berlin Brown -->
+<!-- Date: 4/1/2007 -->
+<project name="Spider DB Reader" default="compile" basedir=".">	
+
+    <property name="appname.jar"       value="dbreader" />
+	<property name="build.dir"         value="${basedir}/build" />
+	<property name="build.dir.classes" value="${basedir}/build/classes" />
+	<property name="src.dir"     value="${basedir}/src/java" />
+	<property name="scala.src.dir"     value="${basedir}/src/scala" />
+
+	<property name="botlist.dir"       value="${basedir}/../../../../../../../openbotlist" />	
+    <property name="lib.dir"           value="${botlist.dir}/WEB-INF/lib" />	
+
+	<target name="init" description="Initialization">
+		<tstamp/>		
+	</target>
+
+	<!-- Target: Prepare -->
+	<target name="prepare">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${build.dir.classes}"/>
+	</target>
+
+	<!-- Define the library files for Classpath -->
+	<property name="scala-compiler.jar" value="${botlist.dir}/runtime-lib/scala-compiler-2.6.0.jar" />
+	<property name="scala-library.jar" value="${lib.dir}/scala-library.jar" />
+	
+	<!-- Target: CLASSPATH -->
+	<path id="classpath">
+		<pathelement location="${scala-compiler.jar}"/>
+		<pathelement location="${scala-library.jar}"/>
+		<pathelement location="${build.dir.classes}"/>
+	</path>
+	
+	<path id="runtime.classpath">
+		<pathelement location="${build.dir}/${appname.jar}.jar" />
+	</path>
+	
+	<taskdef resource="scala/tools/ant/antlib.xml">
+	  <classpath refid="classpath" />
+	</taskdef>
+	
+	<target name="compile" depends="prepare">
+	  <javac deprecation="true"
+				srcdir="${src.dir}"
+				destdir="${build.dir.classes}"
+				target="1.5"
+				includes="**/*.java">
+			<classpath refid="classpath"/>
+			<compilerarg value="-Xlint" />
+	  </javac>
+	  <scalac srcdir="${scala.src.dir}" destdir="${build.dir.classes}" 
+	  		classpathref="classpath" force="never">	  		
+	    <include name="**/*.scala"/>
+	  </scalac>
+	</target>
+
+	<!-- Build jar -->
+	<target name="package" depends="compile">
+		<jar jarfile="${build.dir}/${appname.jar}.jar">
+			<fileset dir="${build.dir.classes}">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<!-- Run the application -->
+	<target name="run" depends="package">
+		<java classname="org.botlist.dbreader.DbReader" fork="false">
+			<classpath refid="classpath"/>
+			<arg path="${basedir}/../example/spiderdb_7.sdb" />
+		</java>
+	</target>
+		
+	<!-- Zip the development code base -->
+	<target name="zip.codebase" depends="clean,package">
+		<fail unless="appname.jar">APPNAME.JAR must be set, see the build.properties file</fail>
+		<zip destfile="${basedir}/build/${appname.jar}.zip" basedir="${basedir}" />
+	</target>
+	
+	<!-- Main Clean -->
+	<target name="clean">
+		<delete dir="${build.dir}" />		
+	</target>
+</project>
+<!-- End of the File -->

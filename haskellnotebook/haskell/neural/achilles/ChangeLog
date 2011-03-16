@@ -1,0 +1,20 @@
+0.0.1 (05/01/2000):
+Initial release
+
+0.0.2 (05/09/2000):
+Added PNG screenshot support
+
+0.0.3 (05/10/2000):
+Ported to Solaris
+
+0.0.4 (10/04/2000):
+Bit of a delay, got back to work;
+Ported to Win32 (Cygwin)
+
+0.0.5 (01/08/2001):
+Added autoconf support
+
+1 (05/31/2001):
+Did away with silly version numbers and opted for a single digit.
+Fixed Debian/alpha build by replacing 'unsigned int' with 'png_size_t'
+ in screenshot.cc

@@ -1,0 +1,8 @@
+/usr/local/bin/arm-apple-darwin9-gcc -c -I/usr/local/lib/gcc/arm-apple-darwin9/4.2.1/include -isysroot /usr/local/iphone-sysroot  HelloWorld.m -o HelloWorld.o
+In file included from HelloWorldApp.h:11,
+                 from HelloWorld.m:11:
+/usr/local/iphone-sysroot/usr/include/OpenGLES/EAGL.h:27: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'EAGLRenderingAPI'
+/usr/local/iphone-sysroot/usr/include/OpenGLES/EAGL.h:59: error: expected ')' before 'EAGLRenderingAPI'
+/usr/local/iphone-sysroot/usr/include/OpenGLES/EAGL.h:60: error: expected ')' before 'EAGLRenderingAPI'
+/usr/local/iphone-sysroot/usr/include/OpenGLES/EAGL.h:65: error: expected specifier-qualifier-list before 'EAGLRenderingAPI'
+make: *** [HelloWorld.o] Error 1

@@ -1,0 +1,115 @@
+Achilles 1
+~~~~~~~~~~
+
+Achilles is a simulation of Darwinian evolution in an extremely simplified
+virtual world, that permits freely interacting virtual organisms to fight,
+mate, and feed, learning as they go with Hebbian neural networks.
+
+A note on the version number
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The former version numbers were: 0.0.1, through 0.0.5.  I have
+written a bit more about the change in version number in the
+file "NEWS" and in the "ChangeLog".
+
+What you need to install
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you're running Debian, 'achilles' is available!  Currently (05/31/2001)
+it is in unstable and testing, with a new version to fix the alpha
+build.  Hopefully it will be in the Debian "woody" release, when
+that rolls out!
+
+For everyone else:
+Very simply, to install this, you need OpenGL, GLU, GLUT and SDL
+
+If you want the ability to take PNG screenshots, you will need
+zlib and libpng in addition.
+
+OpenGL is http://www.opengl.org
+but a common free "unofficial" implementation of it is
+Mesa3D at http://www.mesa3d.org
+libpng is http://www.libpng.org/pub/png/libpng.html
+zlib is ftp://ftp.freesoftware.com/pub/infozip/zlib/zlib.html
+
+GLU and GLUT as of now come with Mesa3D
+zlib and libpng are usually included with most Linux distributions
+The zlib library is named libz.so
+
+SDL is Simple Directmedia Layer and is at
+http://www.devolution.com/~slouken/projects/SDL/
+
+
+Platforms
+~~~~~~~~~
+
+Right now I've only got it running on Linux/x86 but it should be trivial to
+port, to any platform that is supported by SDL, and it can be fairly
+easily converted to GLUT only which would make it extremely portable..
+but SDL is a much nicer library than GLUT in my opinion.
+
+1:
+Fixed for Debian/Alpha
+
+0.0.4:
+Ported to Win32
+
+0.0.3: 
+Ported to Solaris
+
+
+Installation
+~~~~~~~~~~~~
+
+./configure && make && make install
+
+Should be able to ignore any warnings related to platform-specific libs,
+unless it pertains to your platform :)
+
+If that does not work on the Solaris or Win32 platforms, I have included
+the old Makefiles for those platforms.  Take a look at them and maybe give
+them a shot: make -f Makefile.win32 or make -f Makefile.solaris
+
+Command-line Options
+~~~~~~~~~~~~~~~~~~~~
+
+achilles [ -v | -h | -x <n> | -z <n> | -f <n> | <n> ]
+
+-v	-  Show current version
+-h      -  Show options and default settings
+-x <n>  -  The X-dimension width of the world
+-z <n>  -  The Z-dimension length of the world
+-f <n>  -  The minimum amount of food in the world
+<n>     -  The minimum number of organisms in the world
+
+Suggested options:
+achilles -x 16 -z 16 -f 10 10
+
+Feel free to experiment - thats what its meant for!
+
+
+Usage while running
+~~~~~~~~~~~~~~~~~~~
+
+Arrow keys control rotation around the Y axis and moving forward and back.
+Page up/down controls position on the Y axis (up or down)
+'p' pauses the program (and greatly increases the framerate!)
+'s' takes a screenshot, saves it as screenshot.png, so remember to rename it!
+'ESC' quits the program
+
+
+Contact
+~~~~~~~
+
+Web Page: http://achilles.sourceforge.net/
+
+Any comments, questions, patches and changes should be submitted to
+
+Matthew Danish
+mdanish@andrew.cmu.edu
+
+If you have come up with a port to any other platform I'd be happy to hear
+and incorporate it into the main source tree.
+
+Thank you
+

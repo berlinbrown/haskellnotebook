@@ -1,0 +1,148 @@
+#ifndef DEFINES_H_98456
+#define DEFINES_H_98456
+
+#include<limits.h>
+#include"conf.h"
+
+#ifdef HAVE_LIBPNG
+#define PNG_SCREENSHOT
+#endif
+
+
+#define ACHILLES_VERSION 1
+
+#define USER_SPEED 0.2
+#define SCREEN_W 640
+#define SCREEN_H 480
+
+#define MISCEGENATION_RATE 0.05
+
+#define DECAY_SPAN 100
+
+#define ENERGY_LOSS_PER_TICK 0.008
+
+#define DAMAGE_PER_HIT 10
+#define ENERGY_PER_DAMAGE 0.2
+
+#define ORGANISM_LIVE 0
+#define ORGANISM_FOOD 1
+
+#define FIGHT_THRESHOLD 10000
+#define REPRODUCTION_THRESHOLD 1
+
+//#define LEARNING_CONSTANT 0.5
+#define ALPHA_COEFFICIENT -1
+
+
+#define EVO_FLOOR_Y 0
+//#define FLOOR_BLOCKS_X 4
+//#define FLOOR_BLOCKS_Z 4
+#define FLOOR_QUAD_SIZE 4
+
+#define WORLD_X (FLOOR_BLOCKS_X-1)*FLOOR_QUAD_SIZE
+#define WORLD_Y 1000
+#define WORLD_Z (FLOOR_BLOCKS_Z-1)*FLOOR_QUAD_SIZE
+
+
+
+struct GeneLimitStruct {
+  long min,max;
+};
+
+
+#define NUM_GENES 17
+
+#define GENE_SIZE_X 0
+#define GENE_SIZE_Y 1
+#define GENE_SIZE_Z 2
+#define GENE_STRENGTH 3
+#define GENE_MAXSPEED 4
+#define GENE_COLOR 5
+#define GENE_MUTATE_RATE 6
+#define GENE_LIFESPAN 7
+#define GENE_ENERGY_TO_OFFSPRING 8
+#define GENE_NUM_NEURODES 9
+#define GENE_NUM_LAYERS 10
+#define GENE_NUM_INPUTS 11
+#define GENE_NUM_OUTPUTS 12
+#define GENE_TOPO_DIST 13
+#define GENE_REACH 14
+#define GENE_METABOLISM 15
+#define GENE_LC 16
+
+#define MAX_VOLUME 100
+#define MIN_VOLUME 1
+
+#define MIN_SIDE_LEN 1
+#define MAX_SIDE_LEN 5
+
+#define MIN_STRENGTH 1
+#define MAX_STRENGTH 256
+
+// scaled of course
+
+#define MIN_MAXSPEED 1
+#define MAX_MAXSPEED 256
+
+#define MIN_COLOR 0
+#define MAX_COLOR 255
+
+#define MIN_MUTATE_RATE 1
+#define MAX_MUTATE_RATE 256
+
+#define MIN_LIFESPAN 1000
+#define MAX_LIFESPAN 100000
+
+#define MIN_NUM_NEURODES 10
+#define MAX_NUM_NEURODES 500
+
+#define MIN_NUM_LAYERS 3
+#define MAX_NUM_LAYERS 150
+
+#define MIN_NUM_INPUTS 10
+#define MAX_NUM_INPUTS 50
+
+#define MIN_NUM_OUTPUTS 10
+#define MAX_NUM_OUTPUTS 50
+
+#define MIN_TOPO_DIST 0
+#define MAX_TOPO_DIST 100
+
+#define MIN_ECAP 1
+#define MAX_ECAP 256
+
+#define MIN_REACH 4
+#define MAX_REACH 8
+
+#define MIN_METABOLISM 1
+#define MAX_METABOLISM 100
+
+#define MIN_LC 1
+#define MAX_LC 100
+
+const GeneLimitStruct GeneLimits[]={
+  { MIN_SIDE_LEN, MAX_SIDE_LEN },
+  { MIN_SIDE_LEN, MAX_SIDE_LEN },
+  { MIN_SIDE_LEN, MAX_SIDE_LEN },
+  { MIN_STRENGTH, MAX_STRENGTH },
+  { MIN_MAXSPEED, MAX_MAXSPEED },
+  { MIN_COLOR, MAX_COLOR },
+  { MIN_MUTATE_RATE, MAX_MUTATE_RATE },
+  { MIN_LIFESPAN, MAX_LIFESPAN },
+  { MIN_ECAP, MAX_ECAP },
+  { MIN_NUM_NEURODES, MAX_NUM_NEURODES },
+  { MIN_NUM_LAYERS, MAX_NUM_LAYERS },
+  { MIN_NUM_INPUTS, MAX_NUM_INPUTS },
+  { MIN_NUM_OUTPUTS, MAX_NUM_INPUTS },
+  { MIN_TOPO_DIST, MAX_TOPO_DIST },
+  { MIN_REACH, MAX_REACH },
+  { MIN_METABOLISM, MAX_METABOLISM },
+  { MIN_LC, MAX_LC }
+};
+
+#define SCALE(x,a,b,c,d) long(double(d - c)/double(b - a) * double(x) + double(c - a))
+
+
+#define MY_PI 3.14159265358979323846
+
+#endif

@@ -1,0 +1,41 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(hebbian.cc)
+AC_CONFIG_AUX_DIR(config)
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(achilles,0.0.5)
+
+dnl Checks for programs.
+AC_PROG_CXX
+dnl AM_PROG_LIBTOOL
+
+AC_PATH_XTRA
+
+LIBS=$X_LIBS
+dnl LIBS='-L/usr/X11R6/lib'
+dnl Checks for libraries. (some are for various platforms and expected to fail)
+AC_CHECK_LIB(opengl32,glEnable,, [AC_MSG_WARN([If this is Win32, you need lib$lib])])
+AC_CHECK_LIB(glu32,gluPerspective,, [AC_MSG_WARN([If this is Win32, you need lib$lib])])
+AC_CHECK_LIB(GL,glEnable,,[AC_MSG_WARN([If this is Linux, you need lib$lib])])
+AC_CHECK_LIB(GLU,gluPerspective,,[AC_MSG_WARN([If this is Linux, you need lib$lib])])
+AC_CHECK_LIB(posix4, main,, [AC_MSG_WARN([If this is Solaris, you need libposix4])])
+AC_CHECK_LIB(z, main)
+AC_CHECK_LIB(m, main)
+AC_CHECK_LIB(png, main)
+AC_CHECK_LIB(pthread, main)
+AC_CHECK_LIB(X11, main)
+AC_CHECK_LIB(Xi, main)
+AC_CHECK_LIB(Xmu, main)
+
+AC_CHECK_LIB(SDL, SDL_SetVideoMode)
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(GL/gl.h GL/glu.h SDL/SDL.h SDL.h limits.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+dnl Checks for library functions.
+
+AC_SUBST(PACKAGE)
+AC_OUTPUT(Makefile)
